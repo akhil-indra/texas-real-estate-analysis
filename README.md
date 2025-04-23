@@ -1,72 +1,97 @@
 #  Texas Residential Real Estate Price Analysis 🏡
 
-This project is about understanding what actually drives house prices in Texas. I used real-world data from over 500 residential property listings and built multiple regression models using Stata to analyze how different features — like square footage, number of bathrooms, year built, and property type — affect a home's listing price.
+This project was about understanding what actually drives housing prices in Texas. I used  data of over 500 residential property listings and built multiple regression models using Stata to analyze how different structural features. For example: Square footage of the property, Number of bathrooms, Age of the Property, and The Property type affect a home's listing price.
 
-The goal wasn’t just to run stats — I wanted to answer real questions:  
-- Why do some homes cost way more than others?  
-- Is square footage always worth more?  
-- Do more bathrooms actually raise the price?  
-- Does age help or hurt a home's value?  
-- Do townhouses, mobile homes, or single-family homes behave differently in the market?
+My objective was to find answers to these key questions:  
+- What makes one house worth hundreds of thousands more than another?
+- Does having more space actually translate to higher value?
+- Are bathrooms more valuable or bedrooms?
+- Does the age of a home increase its appeal or hurt it?
+- And how do different property types (like townhomes vs. single-family homes) influence pricing?
 
 ---
 
 ### How I approached it
 
-I cleaned and transformed the dataset, built several econometric models, and tested for things like multicollinearity, heteroskedasticity, and model fit. I also log-transformed key variables to make the results interpretable as elasticities.
+I cleaned and transformed the dataset and used multiple linear regression models to analyze how different structural affect listing prices.
 
-Then I experimented with:
-- **Interaction terms** (e.g., sqft × property type)
-- **Quadratic terms** (to check diminishing returns)
-- **Dummy variables** for property type and city
+The target variable was the natural log of list price (`ln(list_price)`), and I applied log transformations to other variables also - square footage, bathrooms, bedrooms, and year built to interpret as elasticities and reduce skew.
 
-These allowed me to explore not just direct effects, but how different variables combine or behave in non-linear ways.
+To better capture pricing behavior, I also added:
+- **Quadratic terms** (like `ln_sqft^2`, `ln_yearbuilt^2`) to model diminishing returns
+- **Interaction terms** (e.g., `ln_sqft × property type`) to reflect how size impacts value differently across property categories
+- **Dummy variables** for property type and location (city)
+
+I built five models with each with different vairbales and selected **Model 4** as the best based on interpretability, statistical significance, and an **Adjusted R² of 0.645**.
+
+_All models were tested for multicollinearity, normality, omitted variables, and heteroskedasticity._
+
+| Variable Name     | What It Represents                                 |
+|-------------------|----------------------------------------------------|
+| `list_price`      | Property listing price (USD)                       |
+| `lnlistprice`     | Natural log of listing price                       |
+| `sqft`            | Square footage of the property                     |
+| `ln_sqft`         | Natural log of square footage                      |
+| `baths_full`      | Number of full bathrooms                           |
+| `lnbaths_full`    | Natural log of full bathrooms                      |
+| `beds`            | Number of bedrooms                                 |
+| `ln_beds`         | Natural log of bedrooms                            |
+| `year_built`      | Year the property was built                        |
+| `ln_yearbuilt`    | Natural log of year built                          |
+| `ln_sqft_type`    | Interaction: ln(sqft) × property type              |
+| `ln_yearbuilt2`   | Quadratic term: (ln_yearbuilt)^2                   |
+| `ln_beds2`        | Quadratic term: (ln_beds)^2                        |
 
 ---
 
 ### What I found
 
-The final model (Model 4) gave the best balance of interpretability and accuracy.
+Model 4 gave the best balance of interpretability and accuracy. It includeds log-transformed variables, interaction terms, and quadratic terms to capture nonlinear relationship of pricing.
 
-- **Square footage** and **full bathrooms** had the most consistent, positive effect on listing price.
-- **Bedrooms** showed diminishing returns — adding more bedrooms only helped up to a point.
-- **Newer homes** gained value, but the relationship wasn’t linear. Very new or very old homes had unique effects.
-- **Property type** mattered a lot — mobile homes, townhomes, and farms were priced significantly lower than single-family homes.
+- **Square footage of the Porperty** and **Number of Full Bathrooms** had the most consistent and significant impact on price. A 1% increase in square footage raised price by ~0.55%.
+- **Number of Bedrooms** showed diminishing returns — Adding more bedrooms helped, but only up to 2. Beyond that the marginal value dropped and buyers didn’t pay a premium.
+- **Age of the Property** had a nonlinear effect - very old homes lost value, but new builds after 2000 regained premium pricing msot likely due to buyers preference for modern design and energy efficiency.
+- **Type of the Property** mattered a lot - farms, mobile homes, and townhomes were priced **100–900%** lower than single-family homes
 
-**Adjusted R²: 0.645**  
 
+## Distribution of Listing Prices
 
 <img width="600" alt="image" src="https://github.com/user-attachments/assets/ba4c526b-1dfd-48fa-8a1b-7542eb93d965" />
   
-*Shows skewed distribution of home prices in Texas — most between \$300K–\$500K, with a few luxury outliers.*
+_Shows skewed distribution of home prices in Texas — most between \$300K–\$500K, with a few luxury outliers._
 
-<img width="517" alt="image" src="https://github.com/user-attachments/assets/1d3a92ee-d431-4e3c-90f5-eac173335ff4" />
-  
-*Breakdown of listings by type — single-family homes dominate the market.*
+## Geo Map 🌍 of Property Prices 
+
+<img width="560" alt="image" src="https://github.com/user-attachments/assets/189c3691-08be-428a-89e1-067528bf456b" />
+
+*Homes near urban areas like Dallas, Houston, and Austin cluster at the higher end of the pricing range*
 
 ---
 
-### 📈 Quick View of Results and Output of Different Models
+### Quick View of Results and Regression Output
 
-| Variable             | Effect Summary                                 |
-|----------------------|------------------------------------------------|
-| `ln(sqft)`           | Strong positive – every 1% increase raises price by ~0.55%  
-| `ln(baths_full)`     | Strong positive – highly significant  
-| `ln(beds)`           | Weak linear effect, stronger quadratic term  
-| `ln(year_built)`     | Negative initially, but positive in squared term (nonlinear)  
-| `type_new` dummies   | Significant drops for townhomes, mobile homes, farms
+I summarized the **main predictors** from our best-performing model (Model 4), and shows how five different models compared during testing.
 
+| Variable                  | Interpretation                                                                 |
+|---------------------------|--------------------------------------------------------------------------------|
+| `ln(sqft)`                | Significant positive (p < 0.01). 100% increase in sqft leads to ~55% higher price            |
+| `ln(baths_full)`          | Strongest driver (p < 0.001). Bathrooms add more value than bedrooms         |
+| `ln(beds)` / `ln(beds^2)` | Positive linear, negative quadratic — diminishing returns after 2 beds       |
+| `ln(year_built)`          |Initially negative — older homes lose value                                 |
+| `ln(year_built^2)`        | Rebounds at newer construction ages                                         |
+| `ln_sqft_type`            | Square footage's effect varies across property types                        |
+| `type_new` (dummies)      | Farms, mobile homes, and townhomes priced 100–900% lower than Single family Housess          |
 
 <img width="658" alt="Screenshot 2025-04-22 at 8 35 31 PM" src="https://github.com/user-attachments/assets/4426d878-3deb-43cc-bedc-841d68b34385" />
 
-*A snapshot of regression output — significant variables starred, VIFs and residual tests passed.*
+*significant variables are starred, VIFs and residual tests passed.*
 
 ---
 
 ### Tools Used for the Project
 
-- **Stata** – for regression modeling, transformations, and residual testing
-- **Excel** – for charting (price histograms, bar graphs by type, and mapping)
+- **Stata** – for data cleaning, regression modeling, visulization, transformations, and diagnostic testing
+- **Excel** – for charting, data cleaning, exporting
 - **Econometric techniques** – log-log models, interaction terms, quadratic terms, dummy encoding
 
 ---
@@ -81,7 +106,7 @@ The final model (Model 4) gave the best balance of interpretability and accuracy
 
 ### Why this mattered to me
 
-This wasn’t just a class assignment. It taught me how to take raw, messy data and turn it into something that can answer a real-world question with confidence.
+This project was more than a class final, it taught me how to take raw, messy data and turn it into something that can answer a real world question with confidence.
 
 It forced me to think like a data analyst:
 - How do I clean and prep this data right?
