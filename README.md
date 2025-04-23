@@ -54,13 +54,13 @@ Model 4 gave the best balance of interpretability and accuracy. It includeds log
 - **Type of the Property** mattered a lot - farms, mobile homes, and townhomes were priced **100–900%** lower than single-family homes
 
 
-## Distribution of Listing Prices
+#### Distribution of Listing Prices
 
 <img width="600" alt="image" src="https://github.com/user-attachments/assets/ba4c526b-1dfd-48fa-8a1b-7542eb93d965" />
   
 _Shows skewed distribution of home prices in Texas — most between \$300K–\$500K, with a few luxury outliers._
 
-## Geo Map 🌍 of Property Prices 
+#### Geo Map 🌍 of Property Prices 
 
 <img width="560" alt="image" src="https://github.com/user-attachments/assets/189c3691-08be-428a-89e1-067528bf456b" />
 
