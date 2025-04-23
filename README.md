@@ -73,10 +73,9 @@ The final model (Model 4) gave the best balance of interpretability and accuracy
 
 ### Files in this repository
 
-- `Final_Report_Submission.pdf` – Full write-up with charts, methodology, and regression breakdown
-- `real_estate_texas_500_2024.csv` – Cleaned dataset
-- `Akhil_version_Project_Do_file_NOV23.do` – All Stata code: data prep → modeling → output → visuals
-- `/assets/` – Graphs from the report (price histograms, type breakdowns, regression output)
+- `Final_Report.pdf` – Full report write-up with charts, methodology, and regression breakdown
+- `real_estate_texas_500_2024.csv` – Kaggle dataset
+- `Akhil_version_Project_Do_file_NOV23.do` – All Stata code: data prep - modeling - output - visuals
 
 ---
 
