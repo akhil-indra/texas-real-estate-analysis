@@ -1,4 +1,4 @@
-# 🏡 Texas Real Estate Price Analysis
+#  Texas Residential Real Estate Price Analysis 🏡
 
 This project is about understanding what actually drives house prices in Texas. I used real-world data from over 500 residential property listings and built multiple regression models using Stata to analyze how different features — like square footage, number of bathrooms, year built, and property type — affect a home's listing price.
 
@@ -11,7 +11,7 @@ The goal wasn’t just to run stats — I wanted to answer real questions:
 
 ---
 
-### 🔍 How I approached it
+### How I approached it
 
 I cleaned and transformed the dataset, built several econometric models, and tested for things like multicollinearity, heteroskedasticity, and model fit. I also log-transformed key variables to make the results interpretable as elasticities.
 
@@ -24,7 +24,7 @@ These allowed me to explore not just direct effects, but how different variables
 
 ---
 
-### 📊 What I found
+### What I found
 
 The final model (Model 4) gave the best balance of interpretability and accuracy.
 
@@ -34,17 +34,19 @@ The final model (Model 4) gave the best balance of interpretability and accuracy
 - **Property type** mattered a lot — mobile homes, townhomes, and farms were priced significantly lower than single-family homes.
 
 **Adjusted R²: 0.645**  
-> This means about 64.5% of the variation in prices was explained by the model — solid for housing data with lots of variance.
 
-(📸 *Insert: `price-histogram.png`*)  
+
+<img width="600" alt="image" src="https://github.com/user-attachments/assets/ba4c526b-1dfd-48fa-8a1b-7542eb93d965" />
+  
 *Shows skewed distribution of home prices in Texas — most between \$300K–\$500K, with a few luxury outliers.*
 
-(📸 *Insert: `property-types.png`*)  
+<img width="517" alt="image" src="https://github.com/user-attachments/assets/1d3a92ee-d431-4e3c-90f5-eac173335ff4" />
+  
 *Breakdown of listings by type — single-family homes dominate the market.*
 
 ---
 
-### 📈 Quick View of Results
+### 📈 Quick View of Results and Output of Different Models
 
 | Variable             | Effect Summary                                 |
 |----------------------|------------------------------------------------|
@@ -54,12 +56,14 @@ The final model (Model 4) gave the best balance of interpretability and accuracy
 | `ln(year_built)`     | Negative initially, but positive in squared term (nonlinear)  
 | `type_new` dummies   | Significant drops for townhomes, mobile homes, farms
 
-(📸 *Insert: `model4-output.png`*)  
+
+<img width="658" alt="Screenshot 2025-04-22 at 8 35 31 PM" src="https://github.com/user-attachments/assets/4426d878-3deb-43cc-bedc-841d68b34385" />
+
 *A snapshot of regression output — significant variables starred, VIFs and residual tests passed.*
 
 ---
 
-### 🛠️ Tools Used
+### Tools Used for the Project
 
 - **Stata** – for regression modeling, transformations, and residual testing
 - **Excel** – for charting (price histograms, bar graphs by type, and mapping)
@@ -67,7 +71,7 @@ The final model (Model 4) gave the best balance of interpretability and accuracy
 
 ---
 
-### 📁 What’s in this repo
+### Files in this repository
 
 - `Final_Report_Submission.pdf` – Full write-up with charts, methodology, and regression breakdown
 - `real_estate_texas_500_2024.csv` – Cleaned dataset
@@ -76,7 +80,7 @@ The final model (Model 4) gave the best balance of interpretability and accuracy
 
 ---
 
-### 📌 Why this matters
+### Why this mattered to me
 
 This wasn’t just a class assignment. It taught me how to take raw, messy data and turn it into something that can answer a real-world question with confidence.
 
@@ -85,5 +89,5 @@ It forced me to think like a data analyst:
 - Which model actually makes sense here?
 - How do I explain this so someone in real estate (or policy) actually gets it?
 
-This project gave me full-cycle experience — from analysis to insight — and sharpened both my technical and storytelling skills.
+This project gave me full-cycle experience, from analysis to insight, and sharpened both my technical and storytelling skills.
 
