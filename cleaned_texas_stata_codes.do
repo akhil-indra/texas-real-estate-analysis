@@ -421,46 +421,30 @@ estat ovtest
 estat hettest
 **Model 4 Robust**
 
-// ----- Data Exploration -----
+// ----- Data Exporting -----
 
 reg lnlistprice lnbaths_full ln_beds ln_yearbuilt ///  // Run regression model
 ln_sqft_type ln_yearbuilt2 ln_beds2 i.type_new, vce(robust)
-***Exporting to Final Models Word Document
-reg lnlistprice lnbaths_full ln_beds ln_sqft ln_yearbuilt ln_sqft_baths ln_sqft_lnbeds ln_sqft_yearbuilt lnbaths_lnbeds i.type_new  // Run regression model
 
-// ----- Data Cleaning -----
+***Exporting to Final Models Word Document
+
+// ----- Regression Modeling 1 Exporting -----
 
 outreg2 using myreg.doc, replace ctitle (Model 1) label dec(3) title (Table 1: Factors which effect the real estate price in Texas in 2024. )  // Modify existing variable
 
-// ----- Data Exploration -----
-
-reg lnlistprice lnbaths_full ln_beds ln_sqft ln_yearbuilt ln_sqft2 ln_yearbuilt2 lnbaths_full2 ln_beds2 i.type_new  // Run regression model
-
-// ----- Regression Modeling -----
-
-outreg2 using myreg.doc, append ctitle (Model 2) label
-
-// ----- Data Exploration -----
-
 reg lnlistprice lnbaths_full ln_beds ln_sqft ln_yearbuilt ln_sqft_baths ln_sqft_yearbuilt ln_sqft_lnbeds ln_sqft2 ln_yearbuilt2 lnbaths_full2 ln_beds2 i.type_new  // Run regression model
 
-// ----- Regression Modeling -----
+// ----- Regression Modeling 3 Exporting -----
 
 outreg2 using myreg.doc, append ctitle (Model 3) label
 
-// ----- Data Exploration -----
-
-reg lnlistprice lnbaths_full ln_beds ln_yearbuilt ln_sqft_type ln_yearbuilt2 ln_beds2 i.type_new, vce(robust)  // Run regression model
-
-// ----- Regression Modeling -----
+// ----- Regression Modeling 4 Exporting ----
 
 outreg2 using myreg.doc, append ctitle (Model 4) label
 
-// ----- Data Exploration -----
-
 reg lnlistprice lnbaths_full ln_beds ln_sqft ln_yearbuilt ln_sqft_baths ln_sqft_lnbeds ln_sqft_yearbuilt baths_yearbuilt lnbaths_lnbeds ln_sqft2 ln_yearbuilt2 lnbaths_full2 ln_beds2 i.type_new  // Run regression model
 
-// ----- Regression Modeling -----
+// ----- Regression Modeling Labelling -----
 
 outreg2 using myreg.doc, append ctitle (Model 5) label
 label variable lnbaths_full "Log of Bathrooms"
