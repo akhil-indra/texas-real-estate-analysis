@@ -1,7 +1,6 @@
 *****************************************************
 * Texas Real Estate Price Analysis - Cleaned Do File
 * Author: Akhil Indrabalan
-* Description: Organized Stata code with comments
 *****************************************************
 
 *playing with the data for some insights
