@@ -82,7 +82,7 @@ I summarized the **main predictors** from our best-performing model (Model 4), a
 | `ln_sqft_type`            | Square footage's effect varies across property types                        |
 | `type_new` (dummies)      | Farms, mobile homes, and townhomes priced 100–900% lower than Single family Housess          |
 
-<img width="658" alt="Screenshot 2025-04-22 at 8 35 31 PM" src="https://github.com/user-attachments/assets/4426d878-3deb-43cc-bedc-841d68b34385" />
+<img width="723" alt="Screenshot 2025-04-24 at 8 25 56 AM" src="https://github.com/user-attachments/assets/91fe1ad1-a14f-4c2e-bfce-d44bb37090e3" />
 
 *significant variables are denoted using astrix, VIFs and residual tests passed.*
 
