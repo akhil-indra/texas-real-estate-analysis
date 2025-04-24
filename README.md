@@ -56,9 +56,8 @@ Model 4 gave the best balance of interpretability and accuracy. It includeds log
 
 #### Distribution of Listing Prices
 
-![Texas_realEstate](https://github.com/user-attachments/assets/c4a0aeb3-fabe-499e-8f3c-e13af3bc4df9)
+<img width="599" alt="image" src="https://github.com/user-attachments/assets/6b92d0a0-6a39-4f52-a84d-d866f2fc435a" />
 
-  
 _Shows skewed distribution of home prices in Texas — most between \$300K–\$500K, with a few luxury outliers._
 
 #### Geo Map 🌍 of Property Prices 
